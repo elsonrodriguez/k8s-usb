@@ -1,0 +1,17 @@
+# For more configuration options, see https://github.com/coreos/etcd/blob/master/Documentation/configuration.md
+
+[Unit]
+Description=Etcd Server
+After=network.target
+
+[Service]
+Type=simple
+# etc logs to the journal directly, suppress double logging
+StandardOutput=null
+EnvironmentFile=-/etc/etcd/etcd.conf
+User=root
+ExecStart=/usr/bin/etcd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

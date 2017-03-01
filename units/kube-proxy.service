@@ -1,0 +1,16 @@
+[Unit]
+Description=Kubernetes Kube-Proxy Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+EnvironmentFile=-/etc/kubernetes/node/config.conf
+EnvironmentFile=-/etc/kubernetes/node/kube-proxy.conf
+ExecStart=/usr/bin/kube-proxy \
+	    $KUBE_LOGTOSTDERR \
+	    $KUBE_LOG_LEVEL \
+      $KUBE_MASTER_SERVER \
+	    $KUBE_PROXY_ARGS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
