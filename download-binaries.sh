@@ -24,5 +24,7 @@ rm docker-${DOCKER_VERSION}.tgz
 curl -L -O https://github.com/coreos/etcd/releases/download/v${ETCD_VERSION}/etcd-v${ETCD_VERSION}-linux-amd64.tar.gz
 tar -zxvf etcd-v${ETCD_VERSION}-linux-amd64.tar.gz
 cp etcd-v${ETCD_VERSION}-linux-amd64/etcd* .
-rm -rf etcd-v${ETCD_VERSION}-linux-amd6
+rm -rf etcd-v${ETCD_VERSION}-linux-amd64
+rm etcd-v${ETCD_VERSION}-linux-amd64.tar.gz
 
+chmod +x *

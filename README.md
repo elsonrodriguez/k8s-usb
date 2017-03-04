@@ -27,7 +27,7 @@ To add a node to your cluster, insert the key and run this command
 It will default to hitting `master` by DNS name, if you do not have DNS setup as such:
 
 ```
-/path/to/usbkey/install-node 10.10.10.10
+/path/to/usbkey/install-node.sh 10.10.10.10
 ```
 
 Where `10.10.10.10` is the actual IP of the master.
