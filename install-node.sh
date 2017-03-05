@@ -3,8 +3,17 @@ cp bin/{kubelet,kube-proxy,docker*} /usr/bin
 
 cp units/{kubelet.service,kube-proxy.service,docker.service} /etc/systemd/system/
 
-./generate-kube-routes.sh
-cp units/kube-routes.network /etc/systemd/network
+#For some reason systemd routes aren't working reliably
+#./generate-kube-routes.sh
+#cp units/kube-routes.network /etc/systemd/network
+
+./generate-kube-routes-script.sh
+cp units/kube-routes.service /etc/systemd/system/
+cp units/kube-routes.sh /usr/local/bin
+chmod +x /usr/local/bin/kube-routes.sh
+systemctl enable kube-routes
+systemctl start kube-routes
+
 
 mkdir -p /etc/kubernetes/node
 mkdir -p /etc/kubernetes/manifests
@@ -24,7 +33,10 @@ IFS=. read ip1 ip2 ip3 ip4 <<< "$IP_ADDRESS"
 
 POD_CIDR="10.244.$ip4.1/24"
 
-sed -i "s/POD_CIDR/${POD_CIDR}/" /etc/systemd/system/docker.service
+sed -i "s#POD_CIDR#${POD_CIDR}#" /etc/systemd/system/docker.service
+sed -i "s#IP_ADDRESS#${IP_ADDRESS}#" /etc/kubernetes/node/kubelet.conf
+
+mkdir -p /var/lib/kubelet
 
 systemctl daemon-reload
 systemctl restart systemd-networkd

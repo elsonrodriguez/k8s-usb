@@ -6,7 +6,7 @@ Documentation=http://docs.docker.io
 Type=notify
 MountFlags=slave
 ExecStartPre=/bin/systemctl restart systemd-networkd
-ExecStart=/usr/bin/docker daemon -H fd:// --bip=POD_CIDR --storage-driver=overlay
+ExecStart=/usr/bin/docker daemon -H unix:///var/run/docker.sock --bip=POD_CIDR --storage-driver=overlay
 LimitNOFILE=1048576
 LimitNPROC=1048576
 LimitCORE=infinity

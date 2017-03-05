@@ -1,0 +1,12 @@
+[Unit]
+Description=Kubernetes Static Routes
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+#Type=oneshot
+RestartSec=500
+ExecStart=/usr/local/bin/kube-routes.sh
+
+[Install]
+WantedBy=multi-user.target
