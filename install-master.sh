@@ -16,7 +16,8 @@ mkdir -p /etc/kubernetes/master
 mkdir -p /etc/kubernetes/node
 cp conf/{config.conf,apiserver.conf,controller-manager.conf,scheduler.conf} /etc/kubernetes/master
 cp conf/kube-proxy.conf /etc/kubernetes/node
-sed -i "/KUBE_MASTER_SERVER/d" /etc/kubernetes/node/kube-proxy.conf
+
+sed -i "/http:\/\/master/s/\/master/\/localhost/" /etc/kubernetes/node/kube-proxy.conf
 
 ./generate-kube-routes.sh
 cp units/kube-routes.network /etc/systemd/network
