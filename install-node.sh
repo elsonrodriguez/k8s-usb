@@ -34,7 +34,8 @@ IFS=. read ip1 ip2 ip3 ip4 <<< "$IP_ADDRESS"
 POD_CIDR="10.244.$ip4.1/24"
 
 sed -i "s#POD_CIDR#${POD_CIDR}#" /etc/systemd/system/docker.service
-sed -i "s#IP_ADDRESS#${IP_ADDRESS}#" /etc/kubernetes/node/kubelet.conf
+#sed -i "s#IP_ADDRESS#${IP_ADDRESS}#" /etc/kubernetes/node/kubelet.conf
+sed -i "s#IP_ADDRESS#${HOSTNAME}#" /etc/kubernetes/node/kubelet.conf
 
 mkdir -p /var/lib/kubelet
 
