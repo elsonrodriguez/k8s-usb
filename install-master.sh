@@ -25,7 +25,7 @@ cp units/kube-routes.network /etc/systemd/network
 mkdir -p /etc/etcd
 cp conf/etcd.conf /etc/etcd
 
-mkdir -p /srv/kubernetes/kube-serviceaccount.key
+mkdir -p /srv/kubernetes/
 openssl genrsa -out /srv/kubernetes/kube-serviceaccount.key
 
 systemctl daemon-reload
