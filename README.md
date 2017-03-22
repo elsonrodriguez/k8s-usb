@@ -5,7 +5,8 @@
 From any linux system, insert the usb key and run this command
 
 ```
-/path/to/usbkey/download-binaries.sh
+cd /path/to/usbkey/
+bash download-binaries.sh
 ```
 
 ## Master Installation
@@ -13,7 +14,8 @@ From any linux system, insert the usb key and run this command
 Insert key into master and run this command
 
 ```
-/path/to/usbkey/install-master.sh
+cd /path/to/usbkey/
+bash install-master.sh
 ```
 
 ## Node Installation
@@ -21,13 +23,15 @@ Insert key into master and run this command
 To add a node to your cluster, insert the key and run this command
 
 ```
-/path/to/usbkey/install-node.sh
+cd /path/to/usbkey/
+bash install-node.sh
 ```
 
 It will default to hitting `master` by DNS name, if you do not have DNS setup as such:
 
 ```
-/path/to/usbkey/install-node.sh 10.10.10.10
+cd /path/to/usbkey/
+bash install-node.sh 10.10.10.10
 ```
 
 Where `10.10.10.10` is the actual IP of the master.
